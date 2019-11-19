@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/equm/inventorys/save}">
+        <input type="hidden" name="id" th:if="${inventorys}" th:value="${inventorys.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">week</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="week" placeholder="请输入week" th:value="${inventorys?.week}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ReceivedDate</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="received_date" placeholder="请输入ReceivedDate" th:value="${inventorys?.received_date}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">type</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="type" placeholder="请输入type" th:value="${inventorys?.type}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">unitid</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="unitid" placeholder="请输入unitid" th:value="${inventorys?.unitid}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">builtdate</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="builtdate" placeholder="请输入builtdate" th:value="${inventorys?.builtdate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">machinery</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="machinery" placeholder="请输入machinery" th:value="${inventorys?.machinery}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">conditions</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="conditions" placeholder="请输入conditions" th:value="${inventorys?.conditions}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">LOCCode</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="LOCCode" placeholder="请输入LOCCode" th:value="${inventorys?.LOCCode}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">COUNTRY</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="COUNTRY" placeholder="请输入COUNTRY" th:value="${inventorys?.COUNTRY}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">PORT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="PORT" placeholder="请输入PORT" th:value="${inventorys?.PORT}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">DEPOT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="DEPOT" placeholder="请输入DEPOT" th:value="${inventorys?.DEPOT}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">AREA</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="AREA" placeholder="请输入AREA" th:value="${inventorys?.AREA}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">receiveref</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="receiveref" placeholder="请输入receiveref" th:value="${inventorys?.receiveref}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ContainerSTATUS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="containerstatus" placeholder="请输入ContainerSTATUS" th:value="${inventorys?.containerstatus}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">STAYDAYS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="STAYDAYS" placeholder="请输入STAYDAYS" th:value="${inventorys?.STAYDAYS}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">owner</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="owner" placeholder="请输入owner" th:value="${inventorys?.owner}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">REMARKS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="REMARKS" placeholder="请输入REMARKS" th:value="${inventorys?.REMARKS}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">GATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="GATE" placeholder="请输入GATE" th:value="${inventorys?.GATE}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">RELEASEDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="RELEASEDATE" placeholder="请输入RELEASEDATE" th:value="${inventorys?.RELEASEDATE}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">RELEASEREF</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="RELEASEREF" placeholder="请输入RELEASEREF" th:value="${inventorys?.RELEASEREF}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">GATEOUT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="GATEOUT" placeholder="请输入GATEOUT" th:value="${inventorys?.GATEOUT}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">TRUCK</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="TRUCK" placeholder="请输入TRUCK" th:value="${inventorys?.TRUCK}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">suggestedprice</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="suggestedprice" placeholder="请输入suggestedprice" th:value="${inventorys?.suggestedprice}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">invoiceDate</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="invoiceDate" placeholder="请输入invoiceDate" th:value="${inventorys?.invoiceDate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">INVOICE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="INVOICE" placeholder="请输入INVOICE" th:value="${inventorys?.INVOICE}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CLIENT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="CLIENT" placeholder="请输入CLIENT" th:value="${inventorys?.CLIENT}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">SALES</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="SALES" placeholder="请输入SALES" th:value="${inventorys?.SALES}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">paiddate</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="paiddate" placeholder="请输入paiddate" th:value="${inventorys?.paiddate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ONEBILL</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ONEBILL" placeholder="请输入ONEBILL" th:value="${inventorys?.ONEBILL}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ONEOFFHIREDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ONEOFFHIREDATE" placeholder="请输入ONEOFFHIREDATE" th:value="${inventorys?.ONEOFFHIREDATE}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">FreeDays</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="free_days" placeholder="请输入FreeDays" th:value="${inventorys?.free_days}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Chargedays</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="Chargedays" placeholder="请输入Chargedays" th:value="${inventorys?.Chargedays}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">rate</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="rate" placeholder="请输入rate" th:value="${inventorys?.rate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">storage</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="storage" placeholder="请输入storage" th:value="${inventorys?.storage}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">LOLO</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="LOLO" placeholder="请输入LOLO" th:value="${inventorys?.LOLO}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">GATESERVICE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="GATESERVICE" placeholder="请输入GATESERVICE" th:value="${inventorys?.GATESERVICE}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">repaircost</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="repaircost" placeholder="请输入repaircost" th:value="${inventorys?.repaircost}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">transport</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="transport" placeholder="请输入transport" th:value="${inventorys?.transport}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">PTI</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="PTI" placeholder="请输入PTI" th:value="${inventorys?.PTI}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">TTL</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="TTL" placeholder="请输入TTL" th:value="${inventorys?.TTL}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">VAT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="VAT" placeholder="请输入VAT" th:value="${inventorys?.VAT}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">grandttl</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="grandttl" placeholder="请输入grandttl" th:value="${inventorys?.grandttl}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">chargemonth</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="chargemonth" placeholder="请输入chargemonth" th:value="${inventorys?.chargemonth}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

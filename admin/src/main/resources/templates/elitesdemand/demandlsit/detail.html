@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${demandlsit.id}"></td>
+                    <th>UNIT ID</th>
+                    <td th:text="${demandlsit.unitid}"></td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td th:text="${demandlsit.type}"></td>
+                    <th>Owner</th>
+                    <td th:text="${demandlsit.owenrs}"></td>
+                </tr>
+                <tr>
+                    <th>Built Date</th>
+                    <td th:text="${demandlsit.builtdate}"></td>
+                    <th>Machinery</th>
+                    <td th:text="${demandlsit.machinery}"></td>
+                </tr>
+                <tr>
+                    <th>LOC Code</th>
+                    <td th:text="${demandlsit.loccode}"></td>
+                    <th>Depot Code</th>
+                    <td th:text="${demandlsit.depotcode}"></td>
+                </tr>
+                <tr>
+                    <th>Area</th>
+                    <td th:text="${demandlsit.area}"></td>
+                    <th>Country</th>
+                    <td th:text="${demandlsit.country}"></td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td th:text="${demandlsit.location}"></td>
+                    <th>Condition</th>
+                    <td th:text="${demandlsit.conditions}"></td>
+                </tr>
+                <tr>
+                    <th>Cost Price/实际成本</th>
+                    <td th:text="${demandlsit.costprice}"></td>
+                    <th>Selling price</th>
+                    <td th:text="${demandlsit.sellingprice}"></td>
+                </tr>
+                <tr>
+                    <th>Purchaser/采购</th>
+                    <td th:text="${demandlsit.purchaser}"></td>
+                    <th>Invoice date</th>
+                    <td th:text="${demandlsit.Invoicedate}"></td>
+                </tr>
+                <tr>
+                    <th>创建者</th>
+                    <td th:text="${demandlsit.createBy?.nickname}"></td>
+                    <th>更新者</th>
+                    <td th:text="${demandlsit.updateBy?.nickname}"></td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(demandlsit.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <th>更新时间</th>
+                    <td th:text="${#dates.format(demandlsit.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td th:text="${demandlsit.remark}" colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${inventorys.id}"></td>
+                    <th>week</th>
+                    <td th:text="${inventorys.week}"></td>
+                </tr>
+                <tr>
+                    <th>ReceivedDate</th>
+                    <td th:text="${inventorys.received_date}"></td>s
+                    <th>type</th>
+                    <td th:text="${inventorys.type}"></td>
+                </tr>
+                <tr>
+                    <th>unitid</th>
+                    <td th:text="${inventorys.unitid}"></td>
+                    <th>builtdate</th>
+                    <td th:text="${inventorys.builtdate}"></td>
+                </tr>
+                <tr>
+                    <th>machinery</th>
+                    <td th:text="${inventorys.machinery}"></td>
+                    <th>conditions</th>
+                    <td th:text="${inventorys.conditions}"></td>
+                </tr>
+                <tr>
+                    <th>LOCCode</th>
+                    <td th:text="${inventorys.LOCCode}"></td>
+                    <th>COUNTRY</th>
+                    <td th:text="${inventorys.COUNTRY}"></td>
+                </tr>
+                <tr>
+                    <th>PORT</th>
+                    <td th:text="${inventorys.PORT}"></td>
+                    <th>DEPOT</th>
+                    <td th:text="${inventorys.DEPOT}"></td>
+                </tr>
+                <tr>
+                    <th>AREA</th>
+                    <td th:text="${inventorys.AREA}"></td>
+                    <th>receiveref</th>
+                    <td th:text="${inventorys.receiveref}"></td>
+                </tr>
+                <tr>
+                    <th>ContainerSTATUS</th>
+                    <td th:text="${inventorys.containerstatus}"></td>
+                    <th>STAYDAYS</th>
+                    <td th:text="${inventorys.STAYDAYS}"></td>
+                </tr>
+                <tr>
+                    <th>owner</th>
+                    <td th:text="${inventorys.owner}"></td>
+                    <th>REMARKS</th>
+                    <td th:text="${inventorys.REMARKS}"></td>
+                </tr>
+                <tr>
+                    <th>GATE</th>
+                    <td th:text="${inventorys.GATE}"></td>
+                    <th>RELEASEDATE</th>
+                    <td th:text="${inventorys.RELEASEDATE}"></td>
+                </tr>
+                <tr>
+                    <th>RELEASEREF</th>
+                    <td th:text="${inventorys.RELEASEREF}"></td>
+                    <th>GATEOUT</th>
+                    <td th:text="${inventorys.GATEOUT}"></td>
+                </tr>
+                <tr>
+                    <th>TRUCK</th>
+                    <td th:text="${inventorys.TRUCK}"></td>
+                    <th>suggestedprice</th>
+                    <td th:text="${inventorys.suggestedprice}"></td>
+                </tr>
+                <tr>
+                    <th>invoiceDate</th>
+                    <td th:text="${inventorys.invoiceDate}"></td>
+                    <th>INVOICE</th>
+                    <td th:text="${inventorys.INVOICE}"></td>
+                </tr>
+                <tr>
+                    <th>CLIENT</th>
+                    <td th:text="${inventorys.CLIENT}"></td>
+                    <th>SALES</th>
+                    <td th:text="${inventorys.SALES}"></td>
+                </tr>
+                <tr>
+                    <th>paiddate</th>
+                    <td th:text="${inventorys.paiddate}"></td>
+                    <th>ONEBILL</th>
+                    <td th:text="${inventorys.ONEBILL}"></td>
+                </tr>
+                <tr>
+                    <th>ONEOFFHIREDATE</th>
+                    <td th:text="${inventorys.ONEOFFHIREDATE}"></td>
+                    <th>FreeDays</th>
+                    <td th:text="${inventorys.free_days}"></td>
+                </tr>
+                <tr>
+                    <th>Chargedays</th>
+                    <td th:text="${inventorys.Chargedays}"></td>
+                    <th>rate</th>
+                    <td th:text="${inventorys.rate}"></td>
+                </tr>
+                <tr>
+                    <th>storage</th>
+                    <td th:text="${inventorys.storage}"></td>
+                    <th>LOLO</th>
+                    <td th:text="${inventorys.LOLO}"></td>
+                </tr>
+                <tr>
+                    <th>GATESERVICE</th>
+                    <td th:text="${inventorys.GATESERVICE}"></td>
+                    <th>repaircost</th>
+                    <td th:text="${inventorys.repaircost}"></td>
+                </tr>
+                <tr>
+                    <th>transport</th>
+                    <td th:text="${inventorys.transport}"></td>
+                    <th>PTI</th>
+                    <td th:text="${inventorys.PTI}"></td>
+                </tr>
+                <tr>
+                    <th>TTL</th>
+                    <td th:text="${inventorys.TTL}"></td>
+                    <th>VAT</th>
+                    <td th:text="${inventorys.VAT}"></td>
+                </tr>
+                <tr>
+                    <th>grandttl</th>
+                    <td th:text="${inventorys.grandttl}"></td>
+                    <th>chargemonth</th>
+                    <td th:text="${inventorys.chargemonth}"></td>
+                </tr>
+                <tr>
+                    <th>创建者</th>
+                    <td th:text="${inventorys.createBy?.nickname}"></td>
+                    <th>更新者</th>
+                    <td th:text="${inventorys.updateBy?.nickname}"></td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(inventorys.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <th>更新时间</th>
+                    <td th:text="${#dates.format(inventorys.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>
