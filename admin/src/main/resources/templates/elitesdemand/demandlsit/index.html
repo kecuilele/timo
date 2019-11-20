@@ -12,12 +12,6 @@
         <div class="layui-card-body">
             <div class="layui-row timo-card-screen">
                 <div class="pull-left layui-form-pane timo-search-box">
-<!--                    <div class="layui-inline">-->
-<!--                        <label class="layui-form-label">状态</label>-->
-<!--                        <div class="layui-input-block timo-search-status">-->
-<!--                            <select class="timo-search-select" name="status" mo:dict="SEARCH_STATUS" mo-selected="${param.status}"></select>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="layui-inline">
                         <label class="layui-form-label">UNIT ID</label>
                         <div class="layui-input-block">
@@ -135,13 +129,15 @@
                 <div class="pull-right screen-btn-group">
                     <button class="layui-btn open-popup" data-title="添加Elitesdemand" th:attr="data-url=@{/elitesdemand/demandlsit/add}" data-size="auto">
                         <i class="fa fa-plus"></i> 添加</button>
+                    <button class="layui-btn open-popup ajax-status" data-title="财务付款审核" th:attr="data-url=@{/elitesdemand/demandlsit/adddemand}" data-size="auto">
+                        <i class="fa fa-plus"></i> 财务付款审核</button>
                     <div class="btn-group">
                         <button class="layui-btn">操作<span class="caret"></span></button>
                         <dl class="layui-nav-child layui-anim layui-anim-upbit">
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/ok}">启用</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/freezed}">冻结</a></dd>
+<!--                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/ok}">启用</a></dd>-->
+<!--                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/freezed}">冻结</a></dd>-->
                             <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/delete}">删除</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/submit}">财务付款</a></dd>
+                            <dd><a class="layui-btn open-popup" th:attr="data-url=@{/elitesdemand/demandlsit/adddemand}">财务付款</a></dd>
                         </dl>
                     </div>
                 </div>

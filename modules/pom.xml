@@ -16,5 +16,6 @@
 
     <modules>
         <module>system</module>
+        <module>finanace</module>
     </modules>
 </project>

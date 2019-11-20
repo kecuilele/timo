@@ -1,10 +1,10 @@
-package com.linln.admin.elitesdemand.service.impl;
+package com.linln.admin.finanace.service.impl;
 
-import com.linln.admin.elitesdemand.domain.Demandlsit;
-import com.linln.admin.elitesdemand.repository.DemandlsitRepository;
-import com.linln.admin.elitesdemand.service.DemandlsitService;
+import com.linln.admin.finanace.domain.Finanaceorderss;
+import com.linln.admin.finanace.repository.FinanaceorderssRepository;
 import com.linln.common.data.PageSort;
 import com.linln.common.enums.StatusEnum;
+import com.linln.admin.finanace.service.FinanaceorderssService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * @author cuike
- * @date 2019/11/18
+ * @author 崔珂
+ * @date 2019/11/19
  */
 @Service
-public class DemandlsitServiceImpl implements DemandlsitService {
+public class FinanaceorderssServiceImpl implements FinanaceorderssService {
 
     @Autowired
-    private DemandlsitRepository demandlsitRepository;
+    private FinanaceorderssRepository finanaceorderssRepository;
 
     /**
      * 根据ID查询数据
@@ -30,8 +30,8 @@ public class DemandlsitServiceImpl implements DemandlsitService {
      */
     @Override
     @Transactional
-    public Demandlsit getById(Long id) {
-        return demandlsitRepository.findById(id).orElse(null);
+    public Finanaceorderss getById(Long id) {
+        return finanaceorderssRepository.findById(id).orElse(null);
     }
 
     /**
@@ -40,19 +40,19 @@ public class DemandlsitServiceImpl implements DemandlsitService {
      * @return 返回分页数据
      */
     @Override
-    public Page<Demandlsit> getPageList(Example<Demandlsit> example) {
+    public Page<Finanaceorderss> getPageList(Example<Finanaceorderss> example) {
         // 创建分页对象
         PageRequest page = PageSort.pageRequest();
-        return demandlsitRepository.findAll(example, page);
+        return finanaceorderssRepository.findAll(example, page);
     }
 
     /**
      * 保存数据
-     * @param demandlsit 实体对象
+     * @param finanaceorderss 实体对象
      */
     @Override
-    public Demandlsit save(Demandlsit demandlsit) {
-        return demandlsitRepository.save(demandlsit);
+    public Finanaceorderss save(Finanaceorderss finanaceorderss) {
+        return finanaceorderssRepository.save(finanaceorderss);
     }
 
     /**
@@ -61,6 +61,6 @@ public class DemandlsitServiceImpl implements DemandlsitService {
     @Override
     @Transactional
     public Boolean updateStatus(StatusEnum statusEnum, List<Long> idList) {
-        return demandlsitRepository.updateStatus(statusEnum.getCode(), idList) > 0;
+        return finanaceorderssRepository.updateStatus(statusEnum.getCode(), idList) > 0;
     }
 }

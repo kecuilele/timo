@@ -35,7 +35,7 @@ import javax.persistence.Table;
 @Table(name="elite_demandlsit")
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = StatusUtil.NOT_DELETE)
-public class Demandlsit implements Serializable {
+public class Demandlist implements Serializable {
     // 主键ID
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -96,4 +96,7 @@ public class Demandlsit implements Serializable {
     private User updateBy;
     // 数据状态
     private Byte status = StatusEnum.OK.getCode();
+
+    //外键 订单ID
+    private Long finanaceid;
 }
