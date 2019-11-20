@@ -80,7 +80,7 @@ public class DemandlsitController {
 
     @GetMapping("/adddemand")
     @RequiresPermissions("elitesdemand:demandlsit:adddemand")
-    public String toAdddemand() {
+    public String toAdddemand(@RequestParam("ids") String ids) {
         return "/elitesdemand/demandlsit/adddemand";
     }
 
