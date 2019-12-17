@@ -3,9 +3,9 @@ package com.linln.modules.system.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.linln.common.enums.StatusEnum;
 import com.linln.common.utils.StatusUtil;
-import com.linln.component.excel.ExcelUtil;
 import com.linln.component.excel.annotation.Excel;
 import com.linln.component.excel.enums.ExcelType;
+import com.linln.modules.dictionary.domain.Countrylist;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -16,13 +16,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,19 +28,13 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "sys_user")
-@ToString(exclude = {"dept", "roles"})
-@EqualsAndHashCode(exclude = {"dept", "roles"})
+@ToString(exclude = {"dept", "roles","countrylists"})
+@EqualsAndHashCode(exclude = {"dept", "roles","countrylists"})
 @EntityListeners(AuditingEntityListener.class)
 @SQLDelete(sql = "update sys_user" + StatusUtil.SLICE_DELETE)
 @Where(clause = StatusUtil.NOT_DELETE)
 @Excel("用户数据")
 public class User implements Serializable {
-
-    public static void main(String[] args) throws FileNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream(new File("E:\\downloads\\用户数据20191106.xlsx"));
-        List<User> users = ExcelUtil.importExcel(User.class, fileInputStream);
-        System.out.println();
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Excel(value = "用户ID", type = ExcelType.EXPORT)
@@ -86,4 +76,11 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @JsonIgnore
     private Set<Role> roles = new HashSet<>(0);
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_user_country",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id"))
+    @JsonIgnore
+    private Set<Countrylist> countrylists = new HashSet<>(0);
 }

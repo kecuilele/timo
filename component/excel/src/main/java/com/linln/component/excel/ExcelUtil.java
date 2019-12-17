@@ -20,7 +20,10 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -40,7 +43,7 @@ import java.util.Map;
 public class ExcelUtil {
 
     private static int dataRow = 2;
-    private static Cache dictCache = null;
+    private static Cache dictCache = EhCacheUtil.getDictCache();
 
     /**
      * 获取通用样式

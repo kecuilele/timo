@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<style>
+    layui-from-item{
+    width:33%;
+    display:inline-block;
+}</style>
+<body >
+<div class="layui-form timo-compile">
+    <form th:action="@{/equm/inventorys/billoflading}">
+        <input type="hidden" name="id" th:if="${inventorys}" th:value="${inventorys.id}">
+        <div class="layui-form-item" >
+            <label class="layui-form-label">WEEK</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="week"  th:value="${inventorys?.week}">
+            </div>
+            <label class="layui-form-label">RECEIVEDDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="receiveddate"  th:value="${inventorys?.receiveddate}">
+            </div>
+        </div>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">TYPE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="type"  th:value="${inventorys?.type}">
+            </div>
+            <label class="layui-form-label">UNITID</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="unitid"  th:value="${inventorys?.unitid}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">BUILTDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="builtdate"  th:value="${inventorys?.builtdate}">
+            </div>
+            <label class="layui-form-label">MACHINERY</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="machinery"  th:value="${inventorys?.machinery}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CONDITIONS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="conditions"  th:value="${inventorys?.conditions}">
+        </div>
+            <label class="layui-form-label">LOCCODE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="loccode"  th:value="${inventorys?.loccode}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">COUNTRY</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="country"  th:value="${inventorys?.country}">
+            </div>
+            <label class="layui-form-label">PORT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="port"  th:value="${inventorys?.port}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">DEPOT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="depot"  th:value="${inventorys?.depot}">
+            </div>
+            <label class="layui-form-label">AREA</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="area"  th:value="${inventorys?.area}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">RECEIVEREF</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="receiveref" th:value="${inventorys?.receiveref}">
+            </div>
+            <label class="layui-form-label">CONTAINERSTATUS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="containerstatus"  th:value="${inventorys?.containerstatus}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">STAYDAYS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="staydays"  th:value="${inventorys?.staydays}">
+            </div>
+            <label class="layui-form-label">OWNER</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="owner"  th:value="${inventorys?.owner}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">REMARKS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="remarks"  th:value="${inventorys?.remarks}">
+            </div>
+            <label class="layui-form-label">GATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="gate"  th:value="${inventorys?.gate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">RELEASEDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="releasedate"  th:value="${inventorys?.releasedate}">
+            </div>
+            <label class="layui-form-label">RELEASEREF</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="releaseref"  th:value="${inventorys?.releaseref}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">GATEOUT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="gateout"  th:value="${inventorys?.gateout}">
+            </div>
+            <label class="layui-form-label">TRUCK</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="truck"  th:value="${inventorys?.truck}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">SUGGESTEDPRICE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="suggestedprice"  th:value="${inventorys?.suggestedprice}">
+            </div>
+            <label class="layui-form-label">INVOICEDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="invoiceDate" th:value="${inventorys?.invoicedate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">INVOICE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="invoice"  th:value="${inventorys?.invoice}">
+            </div>
+            <label class="layui-form-label">CLIENT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="client"  th:value="${inventorys?.client}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">SALES</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="sales" th:value="${inventorys?.sales}">
+            </div>
+            <label class="layui-form-label">PAIDDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="paiddate" th:value="${inventorys?.paiddate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ONEBILL</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="onebill"  th:value="${inventorys?.onebill}">
+            </div>
+            <label class="layui-form-label">ONEOFFHIREDATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="oneoffhiredate"  th:value="${inventorys?.oneoffhiredate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">FREEDAYS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="free_days"  th:value="${inventorys?.freedays}">
+            </div>
+            <label class="layui-form-label">CHARGEDAYS</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="chargedays"  th:value="${inventorys?.chargedays}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">RATE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="rate" th:value="${inventorys?.rate}">
+            </div>
+            <label class="layui-form-label">STORAGE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="storage"  th:value="${inventorys?.storage}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">LOLO</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="lolo"  th:value="${inventorys?.lolo}">
+            </div>
+            <label class="layui-form-label">GATESERVICE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="gateservice"  th:value="${inventorys?.gateservice}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">REPAIRCOST</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="repaircost" th:value="${inventorys?.repaircost}">
+            </div>
+            <label class="layui-form-label">TRANSPORT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="transport"  th:value="${inventorys?.transport}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">PTI</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="pti"  th:value="${inventorys?.pti}">
+            </div>
+            <label class="layui-form-label">TTL</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ttl" th:value="${inventorys?.ttl}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">VAT</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="vat"  th:value="${inventorys?.vat}">
+            </div>
+            <label class="layui-form-label">GRANDTTL</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="grandttl"  th:value="${inventorys?.grandttl}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CHARGEMONTH</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="chargemonth"  th:value="${inventorys?.chargemonth}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

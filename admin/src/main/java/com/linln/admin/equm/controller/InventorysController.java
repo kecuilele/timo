@@ -1,8 +1,12 @@
 package com.linln.admin.equm.controller;
 
-import com.linln.admin.equm.domain.Inventorys;
-import com.linln.admin.equm.repository.InventorysRepository;
-import com.linln.admin.equm.service.InventorysService;
+import com.linln.modules.dictionary.domain.Countrylist;
+import com.linln.modules.dictionary.service.CountrylistService;
+import com.linln.modules.elite.elitesdemand.domain.Demandlist;
+import com.linln.modules.elite.elitesdemand.service.DemandlistService;
+import com.linln.modules.equm.domain.Inventorys;
+import com.linln.modules.equm.repository.InventorysRepository;
+import com.linln.modules.equm.service.InventorysService;
 import com.linln.admin.equm.validator.InventorysValid;
 import com.linln.common.enums.StatusEnum;
 import com.linln.common.utils.EntityBeanUtil;
@@ -11,6 +15,8 @@ import com.linln.common.utils.SpringContextUtil;
 import com.linln.common.utils.StatusUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.component.excel.ExcelUtil;
+import com.linln.component.shiro.ShiroUtil;
+import com.linln.modules.system.domain.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -25,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,62 +44,36 @@ public class InventorysController {
 
     @Autowired
     private InventorysService inventorysService;
+    @Autowired
+    private DemandlistService demandlistService;
+    @Autowired
+    private CountrylistService countrylistService;
 
     /**
      * 列表页面
      */
-    @GetMapping(value = {"/index","/A1index","/A2index","/A3index","/A4index","/A5index","/A6index"})
+    @GetMapping(value = {"/index"})
     @RequiresPermissions("equm:inventorys:index")
     public String index(Model model, Inventorys inventorys,HttpServletRequest request) {
-        String a  = request.getRequestURI();
-        //可优化
-        if (a.equals("/equm/inventorys/A2index")){
-            inventorys.setAREA("A2");
-        } else if (a.equals("/equm/inventorys/A3index")){
-            inventorys.setAREA("A3");
-        }else if (a.equals("/equm/inventorys/A4index")){
-            inventorys.setAREA("A4");
-        }else if (a.equals("/equm/inventorys/A5index")){
-            inventorys.setAREA("A5");
-        }else if (a.equals("/equm/inventorys/A6index")){
-            inventorys.setAREA("A6");
-        }else if (a.equals("/equm/inventorys/A1index")){
-            inventorys.setAREA("A1");
-        }
 
-        // 创建匹配器，进行动态查询匹配
-        ExampleMatcher matcher = ExampleMatcher.matching();
+        User user = ShiroUtil.getSubject();
+
+        //根据用户ID 获取国家ID
+        List<Long> countryID  = inventorysService.getCountryByUserId(user.getId());
+        //取国家数组
+        List <String> countryname = countrylistService.getCountryByCountryID(countryID);
+
 
         // 获取数据列表
-        Example<Inventorys> example = Example.of(inventorys, matcher);
-        Page<Inventorys> list = inventorysService.getPageList(example);
-
-        // 封装数据
+        Page<Inventorys> list = inventorysService.getBycountry(countryname,inventorys);
+            // 封装数据 
         model.addAttribute("list", list.getContent());
         model.addAttribute("page", list);
+
+
         return "/equm/inventorys/index";
     }
 
-//    /**
-//     * A2列表页面
-//     */
-//    @GetMapping("/A2index")
-//    @RequiresPermissions("equm:inventorys:index")
-//    public String A1index(Model model, Inventorys inventorys) {
-//
-//        // 创建匹配器，进行动态查询匹配
-//        ExampleMatcher matcher = ExampleMatcher.matching();
-//        inventorys.setAREA("A2");
-//
-//        // 获取数据列表
-//        Example<Inventorys> example = Example.of(inventorys, matcher);
-//        Page<Inventorys> list = inventorysService.getPageList(example);
-//
-//        // 封装数据
-//        model.addAttribute("list", list.getContent());
-//        model.addAttribute("page", list);
-//        return "/equm/inventorys/index";
-//    }
 
     /**
      * 跳转到添加页面
@@ -122,7 +103,7 @@ public class InventorysController {
     @RequiresPermissions({"equm:inventorys:add", "equm:inventorys:edit"})
     @ResponseBody
     public ResultVo save(@Validated InventorysValid valid, Inventorys inventorys) {
-        // 复制保留无需修改的数据
+//         复制保留无需修改的数据
         if (inventorys.getId() != null) {
             Inventorys beInventorys = inventorysService.getById(inventorys.getId());
             EntityBeanUtil.copyProperties(beInventorys, inventorys);
@@ -139,7 +120,7 @@ public class InventorysController {
     @GetMapping("/detail/{id}")
     @RequiresPermissions("equm:inventorys:detail")
     public String toDetail(@PathVariable("id") Inventorys inventorys, Model model) {
-        model.addAttribute("inventorys", inventorys);
+        model.addAttribute("templates/inventorys", inventorys);
         return "/equm/inventorys/detail";
     }
 
@@ -193,6 +174,48 @@ public class InventorysController {
          return ResultVoUtil.success("成功");
     }
 
-    //}
+    /*
+     * 付款完毕对未提单的货物进行展现
+     *
+     * */
+    @GetMapping(value = {"/A1checkingbyequmindex","/A2checkingbyequmindex",
+            "/A3checkingbyequmindex","/A4checkingbyequmindex","/A5checkingbyequmindex",
+            "/A6checkingbyequmindex","/checkingbyequmindex"})
+    @RequiresPermissions(value = {"equm:inventorys:A1checkingbyequmindex",
+            "equm:inventorys:A2checkingbyequmindex", "equm:inventorys:A3checkingbyequmindex",
+            "equm:inventorys:A4checkingbyequmindex", "equm:inventorys:A5checkingbyequmindex",
+            "equm:inventorys:A6checkingbyequmindex", "equm:inventorys:checkingbyequmindex"})
+    public String nobillofladingindex(Model model, Demandlist demandlist, HttpServletRequest request){
 
+        User user = ShiroUtil.getSubject();
+
+        //根据用户ID 获取国家ID
+        List<Long> countryID  = inventorysService.getCountryByUserId(user.getId());
+        //取国家数组
+        List <String> countryname = countrylistService.getCountryByCountryID(countryID);
+        // 获取数据列表
+        Example<Demandlist> example = Example.of(demandlist);
+        Page<Demandlist> list = demandlistService.getPageList(example);
+        model.addAttribute("user" , user);
+        //Date date = new Date();
+        // 封装数据
+        model.addAttribute("list", list.getContent());
+        model.addAttribute("page", list);
+        return "/equm/inventorys/checkingbyequmindex";
+    }
+
+
+    @PostMapping("/billoflading")
+    @RequiresPermissions({"equm:inventorys:billoflading"})
+    @ResponseBody
+    public ResultVo billoflading(@Validated InventorysValid valid, Inventorys inventorys) {
+        //首先改变库存表提货日期 和状态
+        if (demandlistService.billoflading(inventorys.getId(),inventorys.getReceiveddate())){
+            // 保存数据
+            inventorysService.save(inventorys);
+            return ResultVoUtil.SAVE_SUCCESS;
+        }
+        return ResultVoUtil.error("更改采购出错,联系管理员");
+
+    }
 }

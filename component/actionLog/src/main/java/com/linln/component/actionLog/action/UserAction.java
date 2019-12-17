@@ -25,6 +25,7 @@ public class UserAction extends BaseActionMap {
     public static final String USER_SAVE = "user_save";
     public static final String EDIT_PWD = "edit_pwd";
     public static final String EDIT_ROLE = "edit_role";
+    public static final String USER_COUNTRY_AUTH = "user_country_auth";
 
     @Override
     public void init() {
@@ -36,6 +37,9 @@ public class UserAction extends BaseActionMap {
         putMethod(EDIT_PWD, new BusinessMethod("用户密码","editPwd"));
         // 角色分配行为
         putMethod(EDIT_ROLE, new BusinessMethod("角色分配","editRole"));
+
+        putMethod(USER_COUNTRY_AUTH, new BusinessMethod("用户区域分配","userCountryAuth"));
+
     }
 
     /**
@@ -99,6 +103,18 @@ public class UserAction extends BaseActionMap {
             resetLog.getActionLog().setMessage("角色分配成功："+user.getUsername());
         }else {
             resetLog.getActionLog().setMessage("角色分配失败："+user.getUsername());
+        }
+    }
+
+    public void userCountryAuth(ResetLog resetLog){
+        User user = (User) resetLog.getParam("user");
+        Table table = User.class.getAnnotation(Table.class);
+        resetLog.getActionLog().setModel(table.name());
+        resetLog.getActionLog().setRecordId(user.getId());
+        if (resetLog.isSuccess()){
+            resetLog.getActionLog().setMessage("用户区域分配成功："+user.getUsername());
+        }else {
+            resetLog.getActionLog().setMessage("用户区域分配失败："+user.getUsername());
         }
     }
 }

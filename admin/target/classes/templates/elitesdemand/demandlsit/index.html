@@ -8,16 +8,11 @@
         <div class="layui-card-header timo-card-header">
             <span><i class="fa fa-bars"></i> Elitesdemand管理</span>
             <i class="layui-icon layui-icon-refresh refresh-btn"></i>
+            <a th:href="@{/elitesdemand/demandlsit/export}"><i class="fa fa-download"></i></a>
         </div>
         <div class="layui-card-body">
             <div class="layui-row timo-card-screen">
                 <div class="pull-left layui-form-pane timo-search-box">
-<!--                    <div class="layui-inline">-->
-<!--                        <label class="layui-form-label">状态</label>-->
-<!--                        <div class="layui-input-block timo-search-status">-->
-<!--                            <select class="timo-search-select" name="status" mo:dict="SEARCH_STATUS" mo-selected="${param.status}"></select>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="layui-inline">
                         <label class="layui-form-label">UNIT ID</label>
                         <div class="layui-input-block">
@@ -33,7 +28,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">Owner</label>
                         <div class="layui-input-block">
-                            <input type="text" name="owenrs" th:value="${param.owenrs}" placeholder="请输入Owner" autocomplete="off" class="layui-input">
+                            <input type="text" name="owner" th:value="${param.owner}" placeholder="请输入Owner" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -98,12 +93,6 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">Purchaser/采购</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="purchaser" th:value="${param.purchaser}" placeholder="请输入Purchaser/采购" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">Invoice date</label>
                         <div class="layui-input-block">
                             <input type="text" name="Invoicedate" th:value="${param.Invoicedate}" placeholder="请输入Invoice date" autocomplete="off" class="layui-input">
@@ -132,16 +121,19 @@
                         </button>
                     </div>
                 </div>
+                <button type="button" class="layui-btn" id="importBtn">
+                    <i class="layui-icon"></i>
+                    上传文件
+                </button>
                 <div class="pull-right screen-btn-group">
                     <button class="layui-btn open-popup" data-title="添加Elitesdemand" th:attr="data-url=@{/elitesdemand/demandlsit/add}" data-size="auto">
                         <i class="fa fa-plus"></i> 添加</button>
+                    <button class="layui-btn open-popup-param" data-title="提交审核" th:attr="data-url=@{/elitesdemand/demandlsit/adddemand}" data-size="auto">
+                        <i class="fa fa-plus"></i> 提交审核</button>
                     <div class="btn-group">
                         <button class="layui-btn">操作<span class="caret"></span></button>
                         <dl class="layui-nav-child layui-anim layui-anim-upbit">
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/ok}">启用</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/freezed}">冻结</a></dd>
                             <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/delete}">删除</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/submit}">财务付款</a></dd>
                         </dl>
                     </div>
                 </div>
@@ -179,7 +171,7 @@
                             <i class="layui-icon layui-icon-ok"></i></label></td>
                         <td th:text="${item.unitid}">UNIT ID</td>
                         <td th:text="${item.type}">Type</td>
-                        <td th:text="${item.owenrs}">Owner</td>
+                        <td th:text="${item.owner}">Owner</td>
                         <td th:text="${item.builtdate}">Built Date</td>
                         <td th:text="${item.machinery}">Machinery</td>
                         <td th:text="${item.loccode}">LOC Code</td>
@@ -188,10 +180,10 @@
                         <td th:text="${item.country}">Country</td>
                         <td th:text="${item.location}">Location</td>
                         <td th:text="${item.conditions}">Condition</td>
-                        <td th:text="${item.costprice}">Cost Price/实际成本</td>
+                        <td th:text="${item.costprice}">Cost Price</td>
                         <td th:text="${item.sellingprice}">Selling price</td>
-                        <td th:text="${item.purchaser}">Purchaser/采购</td>
-                        <td th:text="${item.Invoicedate}">Invoice date</td>
+                        <td th:text="${item.purchaser}">Purchaser</td>
+                        <td th:text="${#dates.format(item.Invoicedate,'yyyy-MM-dd')}">Invoice date</td>
                         <td th:text="${item.remark}">备注</td>
                         <td>
                             <a class="open-popup" data-title="编辑Elitesdemand" th:attr="data-url=@{'/elitesdemand/demandlsit/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>
@@ -205,6 +197,22 @@
             <div th:replace="/common/fragment :: page"></div>
         </div>
     </div>
-<script th:replace="/common/template :: script"></script>
+    <script th:replace="/common/template :: script"></script>
+    <script>
+        layui.use('upload', function () {
+            var $ = layui.jquery
+                , upload = layui.upload;
+
+            //指定允许上传的文件类型
+            upload.render({
+                elem: '#importBtn'
+                , url: '/elitesdemand/demandlsit/upload'
+                , accept: 'file' //普通文件
+                , done: function (res) {
+                    console.log(res)
+                }
+            });
+        });
+    </script>
 </body>
 </html>

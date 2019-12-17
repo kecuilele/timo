@@ -1,5 +1,7 @@
 package com.linln.admin.system.controller;
 
+import com.linln.modules.dictionary.domain.Countrylist;
+import com.linln.modules.dictionary.service.CountrylistService;
 import com.linln.admin.system.validator.RoleValid;
 import com.linln.common.constant.AdminConst;
 import com.linln.common.enums.ResultEnum;
@@ -45,6 +47,9 @@ public class RoleController {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private CountrylistService countrylistService;
 
     /**
      * 列表页面
@@ -129,6 +134,24 @@ public class RoleController {
         return "/system/role/auth";
     }
 
+
+    /**
+
+     *@描述 跳转到城市授权页面
+
+     *@创建人  cuike
+
+     *@创建时间  2019/12/11
+
+     *@修改人和其它信息
+
+     */
+    @GetMapping("/authcountry")
+    @RequiresPermissions("system:role:authcountry")
+    public String toAuthCountry(@RequestParam(value = "ids") Long id, Model model){
+        model.addAttribute("id", id);
+        return "/system/role/countryauth";
+    }
     /**
      * 获取权限资源列表
      */
@@ -150,7 +173,35 @@ public class RoleController {
         });
         return ResultVoUtil.success(list);
     }
-
+    /**
+    
+     *@描述
+    
+     *@创建人  cuike
+    
+     *@创建时间  2019/12/11
+    
+     *@修改人和其它信息
+    
+     */
+    @PostMapping("/authcountryList")
+    @RequiresPermissions("system:role:authcountryList")
+    @ResponseBody
+    public ResultVo authcountryList(@RequestParam(value = "ids") Role role) {
+        // 获取指定角色权限资源
+        Set<Menu> authMenus = role.getCountrymenus();
+        // 获取全部菜单列表
+        List<Countrylist> list = countrylistService.getListBySortOk();
+        // 融合两项数据
+        list.forEach(menu -> {
+            if (authMenus.contains(menu)) {
+                menu.setRemark("auth:true");
+            } else {
+                menu.setRemark("");
+            }
+        });
+        return ResultVoUtil.success(list);
+    }
     /**
      * 保存授权信息
      */
@@ -174,6 +225,18 @@ public class RoleController {
         roleService.save(role);
         return ResultVoUtil.SAVE_SUCCESS;
     }
+
+    /**
+
+     *@描述 保存国家授权信息
+
+     *@创建人  cuike
+
+     *@创建时间  2019/12/11
+
+     *@修改人和其它信息
+
+     */
 
     /**
      * 跳转到详细页面

@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="thymeleaf" />
+        <module name="jwt" />
         <module name="actionLog" />
         <module name="common" />
         <module name="devtools" />
         <module name="excel" />
         <module name="fileUpload" />
+        <module name="thymeleaf" />
         <module name="system" />
-        <module name="jwt" />
         <module name="shiro" />
         <module name="admin" />
       </profile>

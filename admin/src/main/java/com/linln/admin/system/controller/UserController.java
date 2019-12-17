@@ -1,5 +1,7 @@
 package com.linln.admin.system.controller;
 
+import com.linln.modules.dictionary.domain.Countrylist;
+import com.linln.modules.dictionary.service.CountrylistService;
 import com.linln.admin.system.validator.UserValid;
 import com.linln.common.constant.AdminConst;
 import com.linln.common.enums.ResultEnum;
@@ -34,7 +36,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -58,6 +59,9 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private CountrylistService countrylistService;
+
     /**
      * 列表页面
      */
@@ -73,13 +77,6 @@ public class UserController {
         model.addAttribute("page", list);
         model.addAttribute("dept", user.getDept());
         return "/system/user/index";
-    }
-
-    @PostMapping("/import")
-    @ResponseBody
-    public String a(@RequestParam MultipartFile file){
-        String originalFilename = file.getOriginalFilename();
-        return "上传成功";
     }
 
     /**
@@ -257,6 +254,39 @@ public class UserController {
         userService.save(user);
         return ResultVoUtil.SAVE_SUCCESS;
     }
+
+    @GetMapping("/auth/country")
+    public String toAuthCountry(@RequestParam(value = "ids") Long id, Model model){
+        model.addAttribute("id", id);
+        return "/system/user/countryAuth";
+    }
+
+    @GetMapping("/auth/countryList")
+    @ResponseBody
+    public ResultVo anthCountryList(@RequestParam(value = "ids") User user){
+        Set<Countrylist> countrylists = user.getCountrylists();
+        List<Countrylist> list = countrylistService.getListBySortOk();
+        list.forEach(countrylist -> {
+            if(countrylists.contains(countrylist)){
+                countrylist.setRemark("auth:true");
+            }else{
+                countrylist.setRemark("");
+            }
+        });
+        return ResultVoUtil.success(list);
+    }
+
+    @PostMapping("/auth/country/save")
+    @ResponseBody
+    @ActionLog(key = "user_country_auth", action = UserAction.class)
+    public ResultVo authCountrySave(@RequestParam(value = "id", required = true) User user,
+                                    @RequestParam(value = "authId", required = false) HashSet<Countrylist> countrylists){
+        user.setCountrylists(countrylists);
+        userService.save(user);
+        return ResultVoUtil.SAVE_SUCCESS;
+    }
+
+
 
     /**
      * 获取用户头像

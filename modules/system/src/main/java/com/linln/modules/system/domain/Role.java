@@ -67,4 +67,11 @@ public class Role implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "menu_id"))
     @JsonIgnore
     private Set<Menu> menus = new HashSet<>(0);
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_role_countrylist",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "countrylist_id"))
+    @JsonIgnore
+    private Set<Menu> countrymenus = new HashSet<>(0);
 }

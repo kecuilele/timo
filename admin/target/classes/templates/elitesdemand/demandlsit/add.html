@@ -21,7 +21,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Owner</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="owenrs" placeholder="请输入Owner" th:value="${demandlsit?.owenrs}">
+                <input class="layui-input" type="text" name="owner" placeholder="请输入Owner" th:value="${demandlsit?.owner}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -73,9 +73,9 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">Cost Price/实际成本</label>
+            <label class="layui-form-label">Cost Price</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="costprice" placeholder="请输入Cost Price/实际成本" th:value="${demandlsit?.costprice}">
+                <input class="layui-input" type="text" name="costprice" placeholder="请输入Cost Price" th:value="${demandlsit?.costprice}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -84,16 +84,16 @@
                 <input class="layui-input" type="text" name="sellingprice" placeholder="请输入Selling price" th:value="${demandlsit?.sellingprice}">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">Purchaser/采购</label>
-            <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="purchaser" placeholder="请输入Purchaser/采购" th:value="${demandlsit?.purchaser}">
-            </div>
-        </div>
+<!--        <div class="layui-form-item">-->
+<!--            <label class="layui-form-label">Purchaser</label>-->
+<!--            <div class="layui-input-inline">-->
+<!--                <input class="layui-input layui-disabled" type="text" name="purchaser" disabled readonly th:value="${user.nickname}">-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">Invoice date</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="Invoicedate" placeholder="请输入Invoice date" th:value="${demandlsit?.Invoicedate}">
+                <input type="date" class="layui-input" name="Invoicedate"  id="laydate" placeholder="yyyy-MM-dd" lay-key="1"th:value="${demandlsit?.Invoicedate}">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">

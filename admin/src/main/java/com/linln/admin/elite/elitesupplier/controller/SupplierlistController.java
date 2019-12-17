@@ -1,7 +1,7 @@
 package com.linln.admin.elite.admin.elitesupplier.controller;
 
-import com.linln.admin.elite.admin.elitesupplier.domain.Supplierlist;
-import com.linln.admin.elite.admin.elitesupplier.service.SupplierlistService;
+import com.linln.modules.elite.elitesupplier.domain.Supplierlist;
+import com.linln.modules.elite.elitesupplier.service.SupplierlistService;
 import com.linln.admin.elite.admin.elitesupplier.validator.SupplierlistValid;
 import com.linln.common.enums.StatusEnum;
 import com.linln.common.utils.EntityBeanUtil;
@@ -73,7 +73,7 @@ public class SupplierlistController {
     @GetMapping("/edit/{id}")
     @RequiresPermissions("elitesupplier:supplierlist:edit")
     public String toEdit(@PathVariable("id") Supplierlist supplierlist, Model model) {
-        model.addAttribute("supplierlist", supplierlist);
+        model.addAttribute("templates/supplierlist", supplierlist);
         return "/elitesupplier/supplierlist/add";
     }
 
@@ -102,7 +102,7 @@ public class SupplierlistController {
     @GetMapping("/detail/{id}")
     @RequiresPermissions("elitesupplier:supplierlist:detail")
     public String toDetail(@PathVariable("id") Supplierlist supplierlist, Model model) {
-        model.addAttribute("supplierlist",supplierlist);
+        model.addAttribute("templates/supplierlist",supplierlist);
         return "/elitesupplier/supplierlist/detail";
     }
 

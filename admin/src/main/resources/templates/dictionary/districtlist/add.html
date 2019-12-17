@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/dictionary/districtlist/save}">
+        <input type="hidden" name="id" th:if="${districtlist}" th:value="${districtlist.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">AREA</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="area" placeholder="请输入AREA" th:value="${districtlist?.area}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">COUNTRY</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="country" placeholder="请输入COUNTRY" th:value="${districtlist?.country}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">COUNTRY CODE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="countrycode" placeholder="请输入COUNTRY CODE" th:value="${districtlist?.countrycode}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CITY</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="city" placeholder="请输入CITY" th:value="${districtlist?.city}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CITY CODE</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="citycode" placeholder="请输入CITY CODE" th:value="${districtlist?.citycode}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Time Zone Description</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="timezone" placeholder="请输入Time Zone Description" th:value="${districtlist?.timezone}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">New Cluster</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="newcluster" placeholder="请输入New Cluster" th:value="${districtlist?.newcluster}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="remark">[[${districtlist?.remark}]]</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

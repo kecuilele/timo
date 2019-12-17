@@ -22,14 +22,6 @@ public class BootApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        System.out.println("\n=================" +
-                "           \n=================" +
-                "           \n=================" +
-                "           \n=================" +
-                "            我崔珂真是小傻逼......" +
-                "           \n=================" +
-                "           \n=================" +
-                "           \n=================" );
         return application.sources(BootApplication.class);
     }
 }

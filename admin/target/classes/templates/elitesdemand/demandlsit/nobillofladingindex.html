@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:mo="https://gitee.com/aun/Timo">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body class="timo-layout-page">
+<div class="layui-card">
+    <div class="layui-card-header timo-card-header">
+        <span><i class="fa fa-bars"></i> Elitesdemand管理</span>
+        <i class="layui-icon layui-icon-refresh refresh-btn"></i>
+        <a th:href="@{/elitesdemand/demandlsit/export}"><i class="fa fa-download"></i></a>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-row timo-card-screen">
+            <div class="pull-left layui-form-pane timo-search-box">
+                <div class="layui-inline">
+                    <label class="layui-form-label">UNIT ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="unitid" th:value="${param.unitid}" placeholder="请输入UNIT ID" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">Type</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="type" th:value="${param.type}" placeholder="请输入Type" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">Owner</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="owner" th:value="${param.owner}" placeholder="请输入Owner" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">Built Date</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="builtdate" th:value="${param.builtdate}" placeholder="请输入Built Date" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">Machinery</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="machinery" th:value="${param.machinery}" placeholder="请输入Machinery" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div id="hpn" style="display:none" class="layui-inline">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">LOC Code</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="loccode" th:value="${param.loccode}" placeholder="请输入LOC Code" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Depot Code</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="depotcode" th:value="${param.depotcode}" placeholder="请输入Depot Code" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Area</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="area" th:value="${param.area}" placeholder="请输入Area" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Country</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="country" th:value="${param.country}" placeholder="请输入Country" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Location</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="location" th:value="${param.location}" placeholder="请输入Location" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Condition</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="conditions" th:value="${param.conditions}" placeholder="请输入Condition" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Invoice date</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Invoicedate" th:value="${param.Invoicedate}" placeholder="请输入Invoice date" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <a href="javascript:showdiv();" id="strHref" class="layui-btn">更多选项+</a>
+                </div>
+                <script type="text/javascript">
+                    function showdiv() {
+                        document.getElementById("hpn").style.display = "block";
+                        document.getElementById("strHref").innerHTML = "收起-";
+                        document.getElementById("strHref").href = "javascript:hidediv()";
+                    }
+
+                    function hidediv() {
+                        document.getElementById("hpn").style.display = "none";
+                        document.getElementById("strHref").innerHTML = "更多选项+";
+                        document.getElementById("strHref").href = "javascript:showdiv()";
+                    }
+                </script>
+                <div class="layui-inline">
+                    <button class="layui-btn timo-search-btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="pull-right screen-btn-group">
+               <!-- <button class="layui-btn open-popup" data-title="添加Elitesdemand" th:attr="data-url=@{/elitesdemand/demandlsit/add}" data-size="auto">
+                    <i class="fa fa-plus"></i> 添加</button>
+                <button class="layui-btn open-popup-param" data-title="提交审核" th:attr="data-url=@{/elitesdemand/demandlsit/adddemand}" data-size="auto">
+                    <i class="fa fa-plus"></i> 提交审核</button>-->
+                <div class="btn-group">
+                    <button class="layui-btn">操作<span class="caret"></span></button>
+<!--                    <dl class="layui-nav-child layui-anim layui-anim-upbit">-->
+<!--                        <dd><a class="ajax-status" th:href="@{/elitesdemand/demandlsit/status/delete}">删除</a></dd>-->
+<!--                    </dl>-->
+                </div>
+            </div>
+        </div>
+        <div class="timo-table-wrap">
+            <table class="layui-table timo-table">
+                <thead>
+                <tr>
+                    <th class="timo-table-checkbox">
+                        <label class="timo-checkbox"><input type="checkbox">
+                            <i class="layui-icon layui-icon-ok"></i></label>
+                    </th>
+                    <th>UNIT ID</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                    <th>Built Date</th>
+                    <th>Machinery</th>
+                    <th>LOC Code</th>
+                    <th>Depot Code</th>
+                    <th>Area</th>
+                    <th>Country</th>
+                    <th>Location</th>
+                    <th>Condition</th>
+                    <th>Cost Price/实际成本</th>
+                    <th>Selling price</th>
+                    <th>Purchaser/采购</th>
+                    <th>Invoice date</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item:${list}">
+                    <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
+                        <i class="layui-icon layui-icon-ok"></i></label></td>
+                    <td th:text="${item.unitid}">UNIT ID</td>
+                    <td th:text="${item.type}">Type</td>
+                    <td th:text="${item.owner}">Owner</td>
+                    <td th:text="${item.builtdate}">Built Date</td>
+                    <td th:text="${item.machinery}">Machinery</td>
+                    <td th:text="${item.loccode}">LOC Code</td>
+                    <td th:text="${item.depotcode}">Depot Code</td>
+                    <td th:text="${item.area}">Area</td>
+                    <td th:text="${item.country}">Country</td>
+                    <td th:text="${item.location}">Location</td>
+                    <td th:text="${item.conditions}">Condition</td>
+                    <td th:text="${item.costprice}">Cost Price</td>
+                    <td th:text="${item.sellingprice}">Selling price</td>
+                    <td th:text="${item.purchaser}">Purchaser</td>
+                    <td th:text="${#dates.format(item.Invoicedate,'yyyy-MM-dd')}">Invoice date</td>
+                    <td th:text="${item.remark}">备注</td>
+                    <td>
+<!--                        <a class="open-popup" data-title="编辑Elitesdemand" th:attr="data-url=@{'/elitesdemand/demandlsit/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>-->
+                        <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/elitesdemand/demandlsit/detail/'+${item.id}}" data-size="800,600" href="#">详细</a>
+<!--                        <a class="ajax-get" data-msg="您是否确认删除" th:href="@{/elitesdemand/demandlsit/status/delete(ids=${item.id})}">删除</a>-->
+                        <a class="open-popup" data-title="提单"  th:attr="data-url=@{'/elitesdemand/demandlsit/billoflading/'+${item.id}}" data-size="auto" href="#">提单</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:replace="/common/fragment :: page"></div>
+    </div>
+</div>
+<script th:replace="/common/template :: script"></script>
+<script>
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#importBtn'
+            , url: '/elitesdemand/demandlsit/upload'
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                console.log(res)
+            }
+        });
+    });
+</script>
+</body>
+</html>

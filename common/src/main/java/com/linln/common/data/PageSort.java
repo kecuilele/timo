@@ -14,12 +14,20 @@ public class PageSort {
     private static final Integer PAGE_SIZE_DEF = 10;
     private static final String ORDER_BY_COLUMN_DEF = "createDate";
     private static final Sort.Direction SORT_DIRECTION = Sort.Direction.DESC;
-
+    private static final Sort.Direction ASORT_DIRECTION = Sort.Direction.ASC;
+    private static final String AERAORDER_BY_COLUMN_DEF = "area";
     /**
      * 创建分页排序对象
      */
     public static PageRequest pageRequest(){
         return pageRequest(PAGE_SIZE_DEF, ORDER_BY_COLUMN_DEF, SORT_DIRECTION);
+    }
+
+    /**
+     * 国家分页排序对象
+     */
+    public static PageRequest areapageRequest(){
+        return pageRequest(PAGE_SIZE_DEF, AERAORDER_BY_COLUMN_DEF, ASORT_DIRECTION);
     }
 
     /**

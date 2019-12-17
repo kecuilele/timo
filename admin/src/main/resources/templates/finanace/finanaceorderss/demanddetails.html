@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:mo="https://gitee.com/aun/Timo">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body class="timo-layout-page">
+<div class="layui-card">
+    <div class="layui-card-header timo-card-header">
+        <span><i class="fa fa-bars"></i> Elites采购订单详情记录</span>
+        <i class="layui-icon layui-icon-refresh refresh-btn"></i>
+    </div>
+    <div class="layui-card-body">
+        <div class="timo-table-wrap">
+            <table class="layui-table timo-table">
+                <thead>
+                <tr>
+                    <th class="timo-table-checkbox">
+                        <label class="timo-checkbox"><input type="checkbox">
+                            <i class="layui-icon layui-icon-ok"></i></label>
+                    </th>
+                    <th>UNIT ID</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                    <th>Built Date</th>
+                    <th>Machinery</th>
+                    <th>LOC Code</th>
+                    <th>Depot Code</th>
+                    <th>Area</th>
+                    <th>Country</th>
+                    <th>Location</th>
+                    <th>Condition</th>
+                    <th>Cost Price/实际成本</th>
+                    <th>Selling price</th>
+                    <th>Purchaser/采购</th>
+                    <th>Invoice date</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item:${list}">
+                    <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
+                        <i class="layui-icon layui-icon-ok"></i></label></td>
+                    <td th:text="${item.unitid}">UNIT ID</td>
+                    <td th:text="${item.type}">Type</td>
+                    <td th:text="${item.owenrs}">Owner</td>
+                    <td th:text="${item.builtdate}">Built Date</td>
+                    <td th:text="${item.machinery}">Machinery</td>
+                    <td th:text="${item.loccode}">LOC Code</td>
+                    <td th:text="${item.depotcode}">Depot Code</td>
+                    <td th:text="${item.area}">Area</td>
+                    <td th:text="${item.country}">Country</td>
+                    <td th:text="${item.location}">Location</td>
+                    <td th:text="${item.conditions}">Condition</td>
+                    <td th:text="${item.costprice}">Cost Price</td>
+                    <td th:text="${item.sellingprice}">Selling price</td>
+                    <td th:text="${item.purchaser}">Purchaser</td>
+                    <td th:text="${#dates.format(item.Invoicedate,'yyyy-MM-dd')}">Invoice date</td>
+                    <td th:text="${item.remark}">备注</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:replace="/common/fragment :: page"></div>
+    </div>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

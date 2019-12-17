@@ -30,15 +30,18 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">ReceivedDate</label>
                     <div class="layui-input-block">
-                        <input type="text" name="ReceivedDate" th:value="${param.received_date}"
+                        <input type="text" name="ReceivedDate" th:value="${param.receiveddate}"
                                placeholder="请输入ReceivedDate" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">type</label>
+                    <!--<label class="layui-form-label">type</label>
                     <div class="layui-input-block">
-                        <input type="text" name="type" th:value="${param.type}" placeholder="请输入type" autocomplete="off"
-                               class="layui-input">
+                        <input  th:value="${param.type}" placeholder="请输入type" autocomplete="off"
+                               class="layui-input">-->
+                    <label class="layui-form-label">type</label>
+                    <div class="layui-input-block timo-search-status">
+                        <select class="timo-search-select" name="type" mo:dict="BOX_TYPE" mo-selected="${param.type}"></select>
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -72,35 +75,35 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">LOCCode</label>
                     <div class="layui-input-block">
-                        <input type="text" name="LOCCode" th:value="${param.LOCCode}" placeholder="请输入LOCCode"
+                        <input type="text" name="LOCCode" th:value="${param.loccode}" placeholder="请输入LOCCode"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">COUNTRY</label>
                     <div class="layui-input-block">
-                        <input type="text" name="COUNTRY" th:value="${param.COUNTRY}" placeholder="请输入COUNTRY"
+                        <input type="text" name="COUNTRY" th:value="${param.country}" placeholder="请输入COUNTRY"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">PORT</label>
                     <div class="layui-input-block">
-                        <input type="text" name="PORT" th:value="${param.PORT}" placeholder="请输入PORT" autocomplete="off"
+                        <input type="text" name="PORT" th:value="${param.port}" placeholder="请输入PORT" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">DEPOT</label>
                     <div class="layui-input-block">
-                        <input type="text" name="DEPOT" th:value="${param.DEPOT}" placeholder="请输入DEPOT"
+                        <input type="text" name="DEPOT" th:value="${param.depot}" placeholder="请输入DEPOT"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">AREA</label>
                     <div class="layui-input-block">
-                        <input type="text" name="AREA" th:value="${param.AREA}" placeholder="请输入AREA" autocomplete="off"
+                        <input type="text" name="AREA" th:value="${param.area}" placeholder="请输入AREA" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>
@@ -122,7 +125,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">STAYDAYS</label>
                         <div class="layui-input-block">
-                            <input type="text" name="STAYDAYS" th:value="${param.STAYDAYS}" placeholder="请输入STAYDAYS"
+                            <input type="text" name="STAYDAYS" th:value="${param.staydays}" placeholder="请输入STAYDAYS"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -136,42 +139,42 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">REMARKS</label>
                         <div class="layui-input-block">
-                            <input type="text" name="REMARKS" th:value="${param.REMARKS}" placeholder="请输入REMARKS"
+                            <input type="text" name="REMARKS" th:value="${param.remarks}" placeholder="请输入REMARKS"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">GATE</label>
                         <div class="layui-input-block">
-                            <input type="text" name="GATE" th:value="${param.GATE}" placeholder="请输入GATE"
+                            <input type="text" name="GATE" th:value="${param.gate}" placeholder="请输入GATE"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">RELEASEDATE</label>
                         <div class="layui-input-block">
-                            <input type="text" name="RELEASEDATE" th:value="${param.RELEASEDATE}"
+                            <input type="text" name="RELEASEDATE" th:value="${param.releasedate}"
                                    placeholder="请输入RELEASEDATE" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">RELEASEREF</label>
                         <div class="layui-input-block">
-                            <input type="text" name="RELEASEREF" th:value="${param.RELEASEREF}"
+                            <input type="text" name="RELEASEREF" th:value="${param.releaseref}"
                                    placeholder="请输入RELEASEREF" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">GATEOUT</label>
                         <div class="layui-input-block">
-                            <input type="text" name="GATEOUT" th:value="${param.GATEOUT}" placeholder="请输入GATEOUT"
+                            <input type="text" name="GATEOUT" th:value="${param.gateout}" placeholder="请输入GATEOUT"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">TRUCK</label>
                         <div class="layui-input-block">
-                            <input type="text" name="TRUCK" th:value="${param.TRUCK}" placeholder="请输入TRUCK"
+                            <input type="text" name="TRUCK" th:value="${param.truck}" placeholder="请输入TRUCK"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -185,28 +188,28 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">invoiceDate</label>
                         <div class="layui-input-block">
-                            <input type="text" name="invoiceDate" th:value="${param.invoiceDate}"
+                            <input type="text" name="invoicedate" th:value="${param.invoicedate}"
                                    placeholder="请输入invoiceDate" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">INVOICE</label>
                         <div class="layui-input-block">
-                            <input type="text" name="INVOICE" th:value="${param.INVOICE}" placeholder="请输入INVOICE"
+                            <input type="text" name="INVOICE" th:value="${param.invoice}" placeholder="请输入INVOICE"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">CLIENT</label>
                         <div class="layui-input-block">
-                            <input type="text" name="CLIENT" th:value="${param.CLIENT}" placeholder="请输入CLIENT"
+                            <input type="text" name="CLIENT" th:value="${param.client}" placeholder="请输入CLIENT"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">SALES</label>
                         <div class="layui-input-block">
-                            <input type="text" name="SALES" th:value="${param.SALES}" placeholder="请输入SALES"
+                            <input type="text" name="SALES" th:value="${param.sales}" placeholder="请输入SALES"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -220,28 +223,28 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">ONEBILL</label>
                         <div class="layui-input-block">
-                            <input type="text" name="ONEBILL" th:value="${param.ONEBILL}" placeholder="请输入ONEBILL"
+                            <input type="text" name="ONEBILL" th:value="${param.onebill}" placeholder="请输入ONEBILL"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">ONEOFFHIREDATE</label>
                         <div class="layui-input-block">
-                            <input type="text" name="ONEOFFHIREDATE" th:value="${param.ONEOFFHIREDATE}"
+                            <input type="text" name="ONEOFFHIREDATE" th:value="${param.oneoffhiredate}"
                                    placeholder="请输入ONEOFFHIREDATE" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">FreeDays</label>
                         <div class="layui-input-block">
-                            <input type="text" name="FreeDays" th:value="${param.free_days}" placeholder="请输入FreeDays"
+                            <input type="text" name="FreeDays" th:value="${param.freedays}" placeholder="请输入FreeDays"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">Chargedays</label>
                         <div class="layui-input-block">
-                            <input type="text" name="Chargedays" th:value="${param.Chargedays}"
+                            <input type="text" name="Chargedays" th:value="${param.chargedays}"
                                    placeholder="请输入Chargedays" autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -262,14 +265,14 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">LOLO</label>
                         <div class="layui-input-block">
-                            <input type="text" name="LOLO" th:value="${param.LOLO}" placeholder="请输入LOLO"
+                            <input type="text" name="LOLO" th:value="${param.lolo}" placeholder="请输入LOLO"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">GATESERVICE</label>
                         <div class="layui-input-block">
-                            <input type="text" name="GATESERVICE" th:value="${param.GATESERVICE}"
+                            <input type="text" name="GATESERVICE" th:value="${param.gateservice}"
                                    placeholder="请输入GATESERVICE" autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -290,21 +293,21 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">PTI</label>
                         <div class="layui-input-block">
-                            <input type="text" name="PTI" th:value="${param.PTI}" placeholder="请输入PTI"
+                            <input type="text" name="PTI" th:value="${param.pti}" placeholder="请输入PTI"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">TTL</label>
                         <div class="layui-input-block">
-                            <input type="text" name="TTL" th:value="${param.TTL}" placeholder="请输入TTL"
+                            <input type="text" name="TTL" th:value="${param.ttl}" placeholder="请输入TTL"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">VAT</label>
                         <div class="layui-input-block">
-                            <input type="text" name="VAT" th:value="${param.VAT}" placeholder="请输入VAT"
+                            <input type="text" name="VAT" th:value="${param.vat}" placeholder="请输入VAT"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -346,15 +349,15 @@
                 </div>
             </div>
             <div class="pull-right screen-btn-group">
-                <button class="layui-btn open-popup" data-title="添加Equm总库存"
+                <!--<button class="layui-btn open-popup" data-title="添加Equm总库存"
                         th:attr="data-url=@{/equm/inventorys/add}" data-size="auto">
                     <i class="fa fa-plus"></i> 添加
-                </button>
+                </button>-->
                 <!--<button type="button" class="import-btn" id="importExcel" th:attr="data-url=@{/equm/equm.inventorys/upload}">导入</button>-->
-                <button type="button" class="layui-btn" id="importBtn">
+               <!-- <button type="button" class="layui-btn" id="importBtn">
                     <i class="layui-icon"></i>
                     上传文件
-                </button>
+                </button>-->
                 <!--<button type="button" class="layui-btn" id="importExcel">
                     <i class="layui-icon"></i>
                     导入
@@ -428,46 +431,46 @@
                     <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
                         <i class="layui-icon layui-icon-ok"></i></label></td>
                     <td th:text="${item.week}">week</td>
-                    <td th:text="${item.received_date}">ReceivedDate</td>
+                    <td th:text="${item.receiveddate}">ReceivedDate</td>
                     <td th:text="${item.type}">type</td>
                     <td th:text="${item.unitid}">unitid</td>
                     <td th:text="${item.builtdate}">builtdate</td>
                     <td th:text="${item.machinery}">machinery</td>
                     <td th:text="${item.conditions}">conditions</td>
-                    <td th:text="${item.LOCCode}">LOCCode</td>
-                    <td th:text="${item.COUNTRY}">COUNTRY</td>
-                    <td th:text="${item.PORT}">PORT</td>
-                    <td th:text="${item.DEPOT}">DEPOT</td>
-                    <td th:text="${item.AREA}">AREA</td>
+                    <td th:text="${item.loccode}">LOCCode</td>
+                    <td th:text="${item.country}">COUNTRY</td>
+                    <td th:text="${item.port}">PORT</td>
+                    <td th:text="${item.depot}">DEPOT</td>
+                    <td th:text="${item.area}">AREA</td>
                     <td th:text="${item.receiveref}">receiveref</td>
                     <td th:text="${item.containerstatus}">ContainerSTATUS</td>
-                    <td th:text="${item.STAYDAYS}">STAYDAYS</td>
+                    <td th:text="${item.staydays}">STAYDAYS</td>
                     <td th:text="${item.owner}">owner</td>
-                    <td th:text="${item.REMARKS}">REMARKS</td>
-                    <td th:text="${item.GATE}">GATE</td>
-                    <td th:text="${item.RELEASEDATE}">RELEASEDATE</td>
-                    <td th:text="${item.RELEASEREF}">RELEASEREF</td>
-                    <td th:text="${item.GATEOUT}">GATEOUT</td>
-                    <td th:text="${item.TRUCK}">TRUCK</td>
+                    <td th:text="${item.remarks}">REMARKS</td>
+                    <td th:text="${item.gate}">GATE</td>
+                    <td th:text="${item.releasedate}">RELEASEDATE</td>
+                    <td th:text="${item.releaseref}">RELEASEREF</td>
+                    <td th:text="${item.gateout}">GATEOUT</td>
+                    <td th:text="${item.truck}">TRUCK</td>
                     <td th:text="${item.suggestedprice}">suggestedprice</td>
-                    <td th:text="${item.invoiceDate}">invoiceDate</td>
-                    <td th:text="${item.INVOICE}">INVOICE</td>
-                    <td th:text="${item.CLIENT}">CLIENT</td>
-                    <td th:text="${item.SALES}">SALES</td>
+                    <td th:text="${item.invoicedate}">invoiceDate</td>
+                    <td th:text="${item.invoice}">INVOICE</td>
+                    <td th:text="${item.client}">CLIENT</td>
+                    <td th:text="${item.sales}">SALES</td>
                     <td th:text="${item.paiddate}">paiddate</td>
-                    <td th:text="${item.ONEBILL}">ONEBILL</td>
-                    <td th:text="${item.ONEOFFHIREDATE}">ONEOFFHIREDATE</td>
-                    <td th:text="${item.free_days}">FreeDays</td>
-                    <td th:text="${item.Chargedays}">Chargedays</td>
+                    <td th:text="${item.onebill}">ONEBILL</td>
+                    <td th:text="${item.oneoffhiredate}">ONEOFFHIREDATE</td>
+                    <td th:text="${item.freedays}">FreeDays</td>
+                    <td th:text="${item.chargedays}">Chargedays</td>
                     <td th:text="${item.rate}">rate</td>
                     <td th:text="${item.storage}">storage</td>
-                    <td th:text="${item.LOLO}">LOLO</td>
-                    <td th:text="${item.GATESERVICE}">GATESERVICE</td>
+                    <td th:text="${item.lolo}">LOLO</td>
+                    <td th:text="${item.gateservice}">GATESERVICE</td>
                     <td th:text="${item.repaircost}">repaircost</td>
                     <td th:text="${item.transport}">transport</td>
-                    <td th:text="${item.PTI}">PTI</td>
-                    <td th:text="${item.TTL}">TTL</td>
-                    <td th:text="${item.VAT}">VAT</td>
+                    <td th:text="${item.pti}">PTI</td>
+                    <td th:text="${item.ttl}">TTL</td>
+                    <td th:text="${item.vat}">VAT</td>
                     <td th:text="${item.grandttl}">grandttl</td>
                     <td th:text="${item.chargemonth}">chargemonth</td>
                     <td>

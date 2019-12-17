@@ -12,13 +12,13 @@ import com.linln.common.utils.SpringContextUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.component.shiro.ShiroUtil;
 import com.linln.modules.system.domain.Menu;
+import com.linln.modules.system.domain.Role;
 import com.linln.modules.system.domain.Upload;
 import com.linln.modules.system.domain.User;
 import com.linln.modules.system.enums.MenuTypeEnum;
 import com.linln.modules.system.service.MenuService;
 import com.linln.modules.system.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +32,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 /**
  * @author 小懒虫
  * @date 2018/8/14
@@ -63,7 +65,8 @@ public class MainController{
             menus.forEach(menu -> keyMenu.put(menu.getId(), menu));
         }else{
             // 其他用户需从相应的角色中获取菜单资源
-            user.getRoles().forEach(role -> {
+            Set<Role> roles = ShiroUtil.getSubjectRoles();
+            roles.forEach(role -> {
                 role.getMenus().forEach(menu -> {
                     if(menu.getStatus().equals(StatusEnum.OK.getCode())){
                         keyMenu.put(menu.getId(), menu);
@@ -75,11 +78,11 @@ public class MainController{
         // 封装菜单树形数据
         Map<Long, Menu> treeMenu = new HashMap<>(16);
         keyMenu.forEach((id, menu) -> {
-            if(!menu.getType().equals(MenuTypeEnum.NOT_MENU.getCode())){
+            if(!menu.getType().equals(MenuTypeEnum.BUTTON.getCode())){
                 if(keyMenu.get(menu.getPid()) != null){
                     keyMenu.get(menu.getPid()).getChildren().put(Long.valueOf(menu.getSort()), menu);
                 }else{
-                    if(menu.getType().equals(MenuTypeEnum.TOP_LEVEL.getCode())){
+                    if(menu.getType().equals(MenuTypeEnum.DIRECTORY.getCode())){
                         treeMenu.put(Long.valueOf(menu.getSort()), menu);
                     }
                 }
